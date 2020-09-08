@@ -1,17 +1,24 @@
 import React from 'react';
-import './App.css';
+import { Helmet } from 'react-helmet-async';
+import { GlobalStyle } from 'styles/global-styles';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 
 function App() {
   return (
-    <div className="app">
-      <Router>
-        <Switch>
-          <Route exact path="/" component={HomePage}></Route>
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <Helmet
+        titleTemplate="%s - React Boilerplate"
+        defaultTitle="React Boilerplate"
+      >
+        <meta name="description" content="React Boilerplate" />
+      </Helmet>
+      <Switch>
+        <Route exact path="/" component={HomePage}></Route>
+      </Switch>
+      <GlobalStyle />
+    </Router>
   );
 }
 
